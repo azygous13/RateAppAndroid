@@ -1,0 +1,7 @@
+<resources>
+    <string name="rate_app_title">Rate Us</string>
+    <string name="rate_app_description">If you enjoy using this app, would you mind taking a moment to rate it? It won\'t take more than a minute. Thank you for your support!</string>
+    <string name="rate_app_later">REMIND ME LATER</string>
+    <string name="rate_app_never">NO, THANKS</string>
+    <string name="rate_app_now">RATE NOW</string>
+</resources>

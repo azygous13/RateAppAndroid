@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="RateAppStyle">
+        <item name="android:background">@android:color/white</item>
+    </style>
+
+    <style name="RateAppStyle.Widget">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="RateAppStyle.TextView" parent="RateAppStyle.Widget">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="RateAppStyle.Button" parent="RateAppStyle.Widget">
+        <item name="android:textColor">?attr/colorAccent</item>
+    </style>
+
+</resources>
