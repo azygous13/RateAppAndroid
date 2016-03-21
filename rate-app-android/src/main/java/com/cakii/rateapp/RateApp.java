@@ -49,6 +49,7 @@ public class RateApp {
     }
 
     public void monitor(@NonNull FragmentActivity activity) {
+        SharedPrefUtils.increaseUseTime(activity);
         if (shouldShowDialog(activity)) {
             String title = activity.getString(R.string.rate_app_title);
             String later = activity.getString(R.string.rate_app_later);
@@ -58,8 +59,6 @@ public class RateApp {
 
             RateAppDialog.newInstance(title, description, later, noThanks, rateNow, isCancelable)
                     .show(activity.getSupportFragmentManager(), "RateApp");
-
-            SharedPrefUtils.increaseUseTime(activity);
         }
     }
 
