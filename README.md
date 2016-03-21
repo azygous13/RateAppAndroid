@@ -2,6 +2,7 @@
 RateAppAndroid is a lightweight library to help you promote your android application by monitors and show a dialog to user to rate the app in Google Play.
 
 ![screen shot 2559-03-21 at 1 00 43 am](https://cloud.githubusercontent.com/assets/3615979/13905956/1ac0b304-ef00-11e5-912d-9acd928f7eb8.png)
+![screenshot 2016-03-21 11 33 37](https://cloud.githubusercontent.com/assets/3615979/13910737/55819d92-ef59-11e5-81e2-e471bdff872c.png)
 
 
 ## Installation
@@ -27,6 +28,7 @@ Just call RateApp.init().monitor(this) in your launcher activity's onCreate() me
                 .useUntilPrompt(5) // default 10
                 .dayUntilPrompt(3) // default 7
                 .cancelable(true) // default false
+                .setShowIcon(true) // default true
                 .monitor(this);
   }
 ```
