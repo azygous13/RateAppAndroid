@@ -10,7 +10,7 @@ To use this library in your android project, just simply add the following depen
 
 ```
 dependencies {
-    compile 'com.cakii:rate-app-android:0.1.0'
+    compile 'com.cakii:rate-app-android:0.2.0'
 }
 ```
 
