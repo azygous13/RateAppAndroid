@@ -13,7 +13,7 @@ ext {
     siteUrl = 'https://github.com/azygous13/RateAppAndroid'
     gitUrl = 'https://github.com/azygousgit 13/RateAppAndroid.git'
 
-    libraryVersion = '0.1.0'
+    libraryVersion = '0.2.0'
 
     developerId = 'cakii'
     developerName = 'Teerapong Chantakard'

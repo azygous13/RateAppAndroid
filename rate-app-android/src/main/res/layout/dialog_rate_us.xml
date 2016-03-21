@@ -1,19 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     style="@style/RateAppStyle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_title"
-        style="@style/RateAppStyle.TextView"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/default_margin_padding_large"
-        android:layout_marginTop="@dimen/default_margin_padding_large"
-        android:text="@string/rate_app_title"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+        android:paddingLeft="@dimen/default_margin_padding_large"
+        android:paddingTop="@dimen/default_margin_padding_large"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imv_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            tools:src="@android:drawable/ic_menu_gallery" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/RateAppStyle.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rate_app_title"
+            android:layout_marginLeft="@dimen/default_margin_padding_small"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tv_description"

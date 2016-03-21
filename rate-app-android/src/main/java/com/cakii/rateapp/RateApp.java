@@ -16,6 +16,7 @@ public class RateApp {
     private int dayUntilPrompt = 7;
     private boolean isDebug = false;
     private boolean isCancelable = false;
+    private boolean isShowIcon = true;
 
     public static RateApp init() {
         if (rateApp == null) {
@@ -48,6 +49,11 @@ public class RateApp {
         return rateApp;
     }
 
+    public RateApp setShowIcon(boolean showIcon) {
+        isShowIcon = showIcon;
+        return rateApp;
+    }
+
     public void monitor(@NonNull FragmentActivity activity) {
         SharedPrefUtils.increaseUseTime(activity);
         if (shouldShowDialog(activity)) {
@@ -57,7 +63,8 @@ public class RateApp {
             String noThanks = activity.getString(R.string.rate_app_never);
             String description = activity.getString(R.string.rate_app_description);
 
-            RateAppDialog.newInstance(title, description, later, noThanks, rateNow, isCancelable)
+            RateAppDialog
+                    .newInstance(title, description, later, noThanks, rateNow, isCancelable, isShowIcon)
                     .show(activity.getSupportFragmentManager(), "RateApp");
         }
     }

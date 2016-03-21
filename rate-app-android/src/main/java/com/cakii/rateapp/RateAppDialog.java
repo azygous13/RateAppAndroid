@@ -2,15 +2,17 @@ package com.cakii.rateapp;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -18,15 +20,14 @@ import android.widget.TextView;
  */
 public class RateAppDialog extends DialogFragment implements View.OnClickListener {
 
-    private TextView title;
-    private TextView description;
     private Button laterButton;
     private Button noButton;
     private Button rateButton;
 
     public static RateAppDialog newInstance(String title, String description,
                                             String later, String noThanks,
-                                            String rateNow, boolean isCancelable) {
+                                            String rateNow, boolean isCancelable,
+                                            boolean isShowIcon) {
         Bundle args = new Bundle();
         args.putString("title", title);
         args.putString("description", description);
@@ -34,6 +35,7 @@ public class RateAppDialog extends DialogFragment implements View.OnClickListene
         args.putString("no_thanks", noThanks);
         args.putString("rate_now", rateNow);
         args.putBoolean("is_cancelable", isCancelable);
+        args.putBoolean("is_show_icon", isShowIcon);
 
         RateAppDialog fragment = new RateAppDialog();
         fragment.setArguments(args);
@@ -54,18 +56,14 @@ public class RateAppDialog extends DialogFragment implements View.OnClickListene
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dialog_rate_us, container, false);
-        title = (TextView) view.findViewById(R.id.tv_title);
-        description = (TextView) view.findViewById(R.id.tv_description);
-        laterButton = (Button) view.findViewById(R.id.btn_later);
-        noButton = (Button) view.findViewById(R.id.btn_no_thanks);
-        rateButton = (Button) view.findViewById(R.id.btn_rate_now);
+
+        setupTextDialog(view);
+        setupIcon(view);
+        setCancelable(getArguments().getBoolean("is_cancelable"));
 
         noButton.setOnClickListener(this);
         rateButton.setOnClickListener(this);
         laterButton.setOnClickListener(this);
-
-        setupTextDialog(getArguments());
-        setCancelable(getArguments().getBoolean("is_cancelable"));
 
         return view;
     }
@@ -88,12 +86,35 @@ public class RateAppDialog extends DialogFragment implements View.OnClickListene
         dismiss();
     }
 
-    private void setupTextDialog(@NonNull Bundle args) {
+    private void setupTextDialog(View view) {
+        TextView title = (TextView) view.findViewById(R.id.tv_title);
+        TextView description = (TextView) view.findViewById(R.id.tv_description);
+        laterButton = (Button) view.findViewById(R.id.btn_later);
+        noButton = (Button) view.findViewById(R.id.btn_no_thanks);
+        rateButton = (Button) view.findViewById(R.id.btn_rate_now);
+
+        Bundle args = getArguments();
         title.setText(args.getString("title"));
         description.setText(args.getString("description"));
         noButton.setText(args.getString("no_thanks"));
         laterButton.setText(args.getString("later"));
         rateButton.setText(args.getString("rate_now"));
+    }
+
+    private void setupIcon(View view) {
+        ImageView icon = (ImageView) view.findViewById(R.id.imv_icon);
+        if (getArguments().getBoolean("is_show_icon", true)) {
+            String packageName = getContext().getPackageName();
+            try {
+                Drawable iconDrawable = getContext().getPackageManager().getApplicationIcon(packageName);
+                icon.setImageDrawable(iconDrawable);
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+            }
+            icon.setVisibility(View.VISIBLE);
+        } else {
+            icon.setVisibility(View.GONE);
+        }
     }
 
     private void openPlayStore() {
