@@ -81,6 +81,7 @@ public class RateAppDialog extends DialogFragment implements View.OnClickListene
         } else if (v == noButton) {
             SharedPrefUtils.setShouldShowDialog(v.getContext(), false);
         } else if (v == rateButton) {
+            SharedPrefUtils.setShouldShowDialog(v.getContext(), false);
             openPlayStore();
         }
         dismiss();
