@@ -1,1 +1,1 @@
-include ':app', ':rate-app-android'
+include ':app', ':rate-app'
