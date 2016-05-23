@@ -72,7 +72,7 @@ public class RateApp {
     private boolean shouldShowDialog(Context context) {
         return isDebug
                 || isFirstLaunch(context)
-                || !isIgnoreDialog(context)
+                || SharedPrefUtils.shouldShowDialog(context)
                 || isOverUseTime(context)
                 || isOverDay(context);
     }
@@ -83,10 +83,6 @@ public class RateApp {
             SharedPrefUtils.setStartDate(context);
         }
         return isFirstLaunch;
-    }
-
-    private boolean isIgnoreDialog(Context context) {
-        return SharedPrefUtils.shouldShowDialog(context);
     }
 
     private boolean isOverUseTime(Context context) {
